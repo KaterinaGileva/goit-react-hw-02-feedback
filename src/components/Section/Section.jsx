@@ -1,15 +1,16 @@
-import { FeedbackOptions } from 'components/Counter/FeedbackOptions';
-import React, { Component } from 'react';
-//import Controls from './Control';
-import './Counter.css';
-import Statistics from './Statistics';
+//import css from './Section.module.css';
 
-class Counter extends Component {
+import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
+import Notification from 'components/Notification/Notification';
+import { Statistics } from 'components/Statistics/Statistics';
+import React, { Component } from 'react';
+
+class Section extends Component {
   
   static propTypes = {
     //
   };
-
+  
   state = {
     good: 0,
     neutral: 0,
@@ -32,35 +33,39 @@ class Counter extends Component {
    return good + neutral + bad;
   }
 
+
   countPositiveFeedbackPercentage = () => {
    const {good} = this.state;
     return this.countTotalFeedback()
     ? Math.round((good / this.countTotalFeedback()) *100)
     : 0;
+    
     };
 
   render() {
     const { good, neutral, bad } = this.state;
     
     return (
-      <div className="Counter">
-      <FeedbackOptions 
+      <div>
+      <h1 /*className={css.title}*/>title</h1>
+
+      <FeedbackOptions
       options={['good', 'neutral', 'bad']} 
       onLeaveFeedback={this.resultOnLeaveFeedback}
-      >
-      </FeedbackOptions>
-
-    <h1 className="Statistics" >Statistics</h1>      
+      />
+    
+    <h1 /*className={css.title}*/>Statistics</h1>   
+{this.countTotalFeedback() ? 
       <Statistics good={ good }
                neutral={ neutral }
                bad={ bad }
                total={ this.countTotalFeedback() }
                positiveFeedback={ this.countPositiveFeedbackPercentage() }
-               />
+      />:
+      <Notification message='There is no feedback'/>}
       </div>
     );
   }
 }
 
-export default Counter;
-
+export default Section;

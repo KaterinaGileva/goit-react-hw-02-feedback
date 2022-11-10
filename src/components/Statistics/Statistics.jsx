@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from './Statistics.css';
+import css from './Statistics.module.css';
 
-const Statistics = ({ good, neutral, bad, total, positiveFeedback}) => {
+export const Statistics = ({ good, neutral, bad, total, positiveFeedback}) => {
 return (
     <ul className={css.statisticsList} >
        <li>Good: {good}</li>
@@ -13,7 +13,6 @@ return (
     </ul>
  );
 };
-export default Statistics;
 
 Statistics.propTypes = {
    
