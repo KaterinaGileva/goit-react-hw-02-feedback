@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import css from './FeedbackOptions.module.css';
+
 
 export const FeedbackOptions = ({ options, onLeaveFeedback}) => {
     
@@ -8,7 +8,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback}) => {
     <button
         key={option}
         id={option}
-        className={css.button}
+        
         type="button"
         onClick={ onLeaveFeedback}>
             {option}
